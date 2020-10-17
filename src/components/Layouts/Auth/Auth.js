@@ -7,8 +7,8 @@ import * as actions from '../../Store/ActionCreators'
 import './auth.scss'
 const Auth = (props) => {
 
-    const [email, setEmail] = useState('johndoe@gmail.com')
-    const [password, setPassword] = useState('pass0123')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     useEffect(() => {
       
