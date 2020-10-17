@@ -1,0 +1,13 @@
+.btn {
+	width: 270px;
+	height: 40px;
+	border: none;
+	outline: none;
+	background: #ff5150;
+	color: #fff;
+	transition: 0.5s ease-in-out;
+}
+
+.btn:focus {
+	background: #7a1e1e;
+}

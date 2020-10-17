@@ -1,0 +1,20 @@
+.nav-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+	background: #ff5150;
+	height: 50px;
+	width: 100%;
+}
+
+.nav-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 95%;
+	margin-top: 0.5rem;
+}
