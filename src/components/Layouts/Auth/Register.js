@@ -8,7 +8,8 @@ const Register = (props) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [name, setName] = useState('')
+    const [fname, setFname] = useState('')
+    const [lname, setLname] = useState('')
     const [nin, setNin] = useState('')
     const [municipality, setMunicipality] = useState('')
     const [userType, setUserType] = useState('')
@@ -21,17 +22,18 @@ const Register = (props) => {
 
     const submitHandler = (e) =>{
         e.preventDefault()
-        props.register(email,password,name,nin,municipality,userType)
+        props.register(email,password,fname,lname,nin,municipality,userType)
     }
 
     return (
         <div>
             <form onSubmit={submitHandler}>
             <div className="auth-container">
-                <h1>Sign Up</h1>
+                {/* <h1>Sign Up</h1> */}
                 <input type="text" placeholder="Email" value={email}  onChange={(e)=> setEmail(e.target.value)}/>
                 <input type="password" placeholder="Password" value={password}  onChange={(e)=> setPassword(e.target.value)}/>
-                <input value={name} type="text" placeholder="Full Name" onChange={(e)=>setName(e.target.value)}/>
+                <input value={fname} type="text" placeholder="First Name" onChange={(e)=>setFname(e.target.value)}/>
+                <input value={lname} type="text" placeholder="Last Name" onChange={(e)=>setLname(e.target.value)}/>
                 <input value={nin} type="text" placeholder="NIN" onChange={(e)=>setNin(e.target.value)}/>
                 <input value={municipality} type="text" placeholder="Municipality" onChange={(e)=>setMunicipality(e.target.value)}/>
                 <select value={userType} onChange={(e)=>setUserType(e.target.value)}>
@@ -48,7 +50,7 @@ const Register = (props) => {
 
 const mapDispatchTopProps = (dispatch) => {
     return {
-        register: (email,password,name,nin,municipality,userType) => dispatch(actions.register(email,password,name,nin,municipality,userType))
+        register: (email,password,fname,lname,nin,municipality,userType) => dispatch(actions.register(email,password,fname,lname,nin,municipality,userType))
     }
 }
 

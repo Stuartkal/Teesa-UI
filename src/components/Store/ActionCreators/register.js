@@ -1,4 +1,4 @@
-import firebase from '../Firebase'
+import axios from 'axios'
 import * as actionTypes from '../Actions/Actions'
 
 export const registerAction = () => {
@@ -19,38 +19,27 @@ export const registerFail = () => {
     }
 }
 
-export const register = (email,password,name,nin,municipality,userType) => {
+export const register = (email,password,fname,lname,nin,municipality,userType) => {
     return dispatch => {
         dispatch(registerAction())
         const user = {
             email,
-            name,
+            password,
+            fname,
+            lname,
             nin,
             municipality,
             userType,
-            date: new Date()
-        }
-        const db = firebase.firestore().collection('teesa-register')
-
-        try {
-         firebase.auth().createUserWithEmailAndPassword(email,password)
-        .then((response)=>{
-            console.log('email',response.user)
-            db
-        .doc()
-        .set(user)
-        .then((response)=>{
-            console.log('register',response)
-        })
-        })
-
-        }
-
-        catch(error) {
-            console.log(error.message)
         }
         
-
+        axios.put('http://localhost:8080/auth/signup',user)
+        .then(res => {
+            dispatch(registerSuccess())
+            console.log(res)
+        })
+        .catch(error => {
+            console.log(error)
+        })
         
     }
 }

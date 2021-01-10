@@ -2,27 +2,31 @@ import React,{useState,useEffect} from 'react'
 import Button from '../../UI/Button'
 import {connect} from 'react-redux'
 import * as actions from '../../Store/ActionCreators'
+import {useSelector} from 'react-redux'
 
 
 import './auth.scss'
 const Auth = (props) => {
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('stuartkal@gmail.com')
+    const [password, setPassword] = useState('pass01234')
+
+    const authenticated = useSelector(state => state.auth.authenticated)
+    // console.log(authenticated)
 
     useEffect(() => {
-      
-    })
+      if(authenticated === true){
+        props.history.push('/home')
+      }
+    },[authenticated])
 
     const submitHandler = (e) => {
         e.preventDefault()
-        props.auth(email,password)
-        props.history.push('/home')
+        props.auth(email,password)  
     }
 
     return (
         <div className="container-main">
-            <div className="recaptcha-container" id="recaptcha"></div>
             <form onSubmit={submitHandler}>
             <div className="auth-container">
                 {/* <h1>Login</h1> */}
